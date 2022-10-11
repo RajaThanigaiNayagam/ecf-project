@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Book;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -21,8 +22,13 @@ class SchoolType extends AbstractType
             ->add('numberOfPages', CheckboxType::class, [
                 'label_attr' => ['class' => 'switch-custom'],
             ])
-            ->add('datePabulished')
-            ->add('Submit', SubmitType::class)
+            ->add('datePabulished', DateTimeType::class)
+            ->add('Submit', SubmitType::class, [
+                'label' => 'Save changes',
+                'attr' => [
+                    'class' => 'btn btn-outline-primary float-right',
+                ]
+                ])
         ;
     }
 
