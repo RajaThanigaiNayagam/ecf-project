@@ -54,15 +54,25 @@ class Book
      */
     private $author;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $token;
+    ///**
+    // * @ORM\Column(type="string", length=255, nullable=true)
+    // */
+    //private $token;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $enabled;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $tokens;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
 
     public function __construct()
     {
@@ -189,17 +199,17 @@ class Book
         return $this;
     }
 
-    public function getToken(): ?string
-    {
-        return $this->token;
-    }
+    //public function getToken(): ?string
+    //{
+    //    return $this->token;
+    //}
 
-    public function setToken(?string $token): self
-    {
-        $this->token = $token;
+    //public function setToken(?string $token): self
+    //{
+    //    $this->token = $token;
 
-        return $this;
-    }
+    //    return $this;
+    //}
 
     public function isEnabled(): ?bool
     {
@@ -209,6 +219,30 @@ class Book
     public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getTokens(): ?string
+    {
+        return $this->tokens;
+    }
+
+    public function setTokens(?string $tokens): self
+    {
+        $this->tokens = $tokens;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }
