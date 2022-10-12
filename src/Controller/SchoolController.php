@@ -40,7 +40,7 @@ class SchoolController extends AbstractController
         
             $email = (new TemplatedEmail())
                 ->from('thanigainayagam@yahoo.fr')
-                ->to('befag90427@dicopto.com')
+                ->to('thanigainayagam@yahoo.fr')
                 ->subject('Thanks for signing up!')
 
                 // path of the Twig template to render
