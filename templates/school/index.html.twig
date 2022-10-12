@@ -10,12 +10,17 @@
 
     <div class="switch-custom" id="addvideo">
         <h2>Ajouter les details de livres</h2>
-        <!-- Default switch -->
-<div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitches">
-  <label class="custom-control-label" for="customSwitches">Toggle this switch element</label>
-</div>
+        <!-- Default switch
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitches">
+            <label class="custom-control-label" for="customSwitches">Toggle this switch element</label>
+        </div> -->
         {{ form(form) }}
+
+        {% for book in books %}
+            <p> {{ book.name}} -  {{ book.isbn}}  -  {{ book.abstract}}            -        {{ book.numberOfPages}}  </p>
+
+        {% endfor %}
     </div>
     
 {% endblock %}

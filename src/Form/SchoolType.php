@@ -19,9 +19,10 @@ class SchoolType extends AbstractType
             ->add('isbn', TextType::class)
             ->add('name', TextType::class)
             ->add('abstract', TextType::class)
-            ->add('numberOfPages', CheckboxType::class, [
-                'label_attr' => ['class' => 'switch-custom'],
-            ])
+//            ->add('numberOfPages', CheckboxType::class, [
+//                'label_attr' => ['class' => 'switch-custom'],
+//            ])
+            ->add('numberOfPages', TextType::class)          
             ->add('datePabulished', DateTimeType::class)
             ->add('Submit', SubmitType::class, [
                 'label' => 'Save changes',

@@ -4,18 +4,19 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Form\SchoolType;
+use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SchoolController extends AbstractController
 {
     /**
      * @Route("/", name="app_home")
      */
-    public function index(Request $request, EntityManagerInterface $em): Response
+    public function index(Request $request, EntityManagerInterface $em, BookRepository $bookRepository)  : Response
     {
         $school = new Book();
 
@@ -36,7 +37,7 @@ class SchoolController extends AbstractController
     
         return $this->render('school/index.html.twig', [
             'form' => $form->createView(),
-            'controller_name' => 'SchoolController',
+            'books' => $bookRepository->findAll(),
         ]);
     }
 }
