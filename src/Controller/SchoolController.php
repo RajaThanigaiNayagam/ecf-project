@@ -6,17 +6,25 @@ use App\Entity\Book;
 use App\Form\SchoolType;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Loader\Configurator\mailer;
 
 class SchoolController extends AbstractController
 {
+    public function __construct()
+    {
+        
+    }
+   
     /**
      * @Route("/", name="app_home")
      */
-    public function index(Request $request, EntityManagerInterface $em, BookRepository $bookRepository)  : Response
+    public function index(Request $request, EntityManagerInterface $em, BookRepository $bookRepository, MailerInterface $mailer)  : Response
     {
         $school = new Book();
 
@@ -30,7 +38,25 @@ class SchoolController extends AbstractController
             $school->setToken($this->generateToken());
             $em->persist($school);
             $em->flush();
+        
+            $email = (new TemplatedEmail())
+                ->from('thanigainayagam@yahoo.fr')
+                ->to('befag90427@dicopto.com')
+                ->subject('Thanks for signing up!')
 
+                // path of the Twig template to render
+                ->htmlTemplate('emails/clientmail.html.twig')
+
+                // pass variables (name => value) to the template
+                ->context([
+                    'token' => $school->getToken(),
+                ]);
+                
+                try {
+                    $mailer->send($email);
+                } catch (TransportExceptionInterface $e) {
+                    dd($e);
+                } 
             return $this->redirectToRoute('app_home');
 
         }
