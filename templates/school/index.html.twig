@@ -18,7 +18,7 @@
         {{ form(form) }}
 
         {% for book in books %}
-            <p> {{ book.name}} -  {{ book.isbn}}  -  {{ book.abstract}}            -        {{ book.numberOfPages}}  </p>
+            <p> {{ book.name}}-{{ book.isbn}}-{{ book.abstract}}- {{ book.token}} - { book.numberOfPages}}  </p>
 
         {% endfor %}
     </div>

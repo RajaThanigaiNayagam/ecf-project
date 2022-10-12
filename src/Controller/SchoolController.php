@@ -27,7 +27,7 @@ class SchoolController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $school = $form->getData();
-
+            $school->setToken($this->generateToken());
             $em->persist($school);
             $em->flush();
 
@@ -40,4 +40,11 @@ class SchoolController extends AbstractController
             'books' => $bookRepository->findAll(),
         ]);
     }
+
+
+    public function generateToken()
+    {
+        return rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'),  '=');
+    }
+    
 }

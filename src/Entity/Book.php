@@ -54,6 +54,11 @@ class Book
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -175,6 +180,18 @@ class Book
     public function removeAuthor(Author $author): self
     {
         $this->author->removeElement($author);
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }
