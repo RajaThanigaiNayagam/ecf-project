@@ -19,9 +19,14 @@ class SchoolType extends AbstractType
             ->add('isbn', TextType::class)
             ->add('name', TextType::class)
             ->add('abstract', TextType::class)
-//            ->add('numberOfPages', CheckboxType::class, [
-//                'label_attr' => ['class' => 'switch-custom'],
+            ->add('enabled', CheckboxType::class, [
+                'label' => 'on',
+                 'label_attr' => ['class' => 'switch-custom'],
+              ])
+//            ->add('enabled', CheckboxType::class, [
+//                ' label_attr' => ['class' => 'radio-inline'],switch-custom
 //            ])
+            
             ->add('numberOfPages', TextType::class)          
             ->add('datePabulished', DateTimeType::class)
             ->add('Submit', SubmitType::class, [
@@ -29,7 +34,7 @@ class SchoolType extends AbstractType
                 'attr' => [
                     'class' => 'btn btn-outline-primary float-right',
                 ]
-                ])
+            ])
         ;
     }
 

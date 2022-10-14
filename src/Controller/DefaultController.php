@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends AbstractController  
 {
-    public function index(): Response
+    public function index3(): Response
     {
         return new Response('Hello world!');
     }
